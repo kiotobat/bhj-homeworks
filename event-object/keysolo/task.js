@@ -18,18 +18,21 @@ class Game {
 
   registerEvents() {
     const symbolComparison = (event) => {
-      let key = `${event.key}`;
+      let key = event.key;
 
       if (key === this.currentSymbol.textContent) {
         this.success();
+      } else if (key === 'Shift' || key === 'Alt' || key === 'Control') {
         return;
+      } else {
+        this.fail();
       }
 
-      if (key === 'Shift' || 'Alt' || 'Control' || 'CapsLock') {
-        return;
-      }
-
-      this.fail();
+      // if (key === 'Shift' || key === 'Alt' || key === 'Control' || key === 'CapsLock') {
+      //   return;
+      // }
+      //
+      // this.fail();
     };
 
     document.addEventListener("keyup", symbolComparison);
